@@ -11,4 +11,6 @@ EOM
 sudo pip install django mysqlclient
 ./manage.py makemigrations
 ./manage.py migrate
+sudo pip install djangorestframework
+sudo pip install django-extensions
 
