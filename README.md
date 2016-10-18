@@ -1,5 +1,5 @@
 # equipo!
-
+## Dev set up
 - Download Virtual Box at https://www.virtualbox.org/wiki/Downloads
 - Download Vagrant at https://www.vagrantup.com/downloads.html
 - Clone this repo and cd into the directory that has Vagrantfile in it
