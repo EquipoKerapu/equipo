@@ -13,3 +13,15 @@
 - go to http://192.168.33.10:8000/admin/ and sign in with the superuser you created. 
 - go http://192.168.33.10:8000/api/students/
 - Explore
+
+## Daily Workflow
+- `git pull` to get any new code
+- `vagrant up`
+- `vagrant ssh`
+- `cd /vagrant/src`
+- `python manage.py migrate` if there are any database migrations
+- `python manage.py runserver 0.0.0.0:8000`
+- code and be merry
+- `logout`
+- `vagrant halt`
+- commit any changes with git
