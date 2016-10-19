@@ -94,7 +94,10 @@ DATABASES = {
         'USER': 'test_user',
         'PASSWORD': 'test_user_pwd',
         'HOST': '127.0.0.1',
-        'PORT': '',    
+        'PORT': '', 
+        'TEST': {
+            'NAME': 'test_equipotest',
+        }   
     }
 }
 
