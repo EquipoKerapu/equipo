@@ -6,7 +6,9 @@
 - `vagrant up`
 - 'vagrant ssh'
 - 'cd /vagrant/src'
-- `source setup.sh`
+- `source setup1.sh`
+- `source setup2.sh`
+- `source setup3.sh`
 - answer yes to all questions, create a root database user when prompted and remember the password because you will be prompted for it again
 - when setup.sh is done, run `./manage.py createsuperuser`
 - `./manage.py runserver 0.0.0.0:8000`
