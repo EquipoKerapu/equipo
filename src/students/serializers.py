@@ -7,6 +7,7 @@ from courses.models import Course
 class UserSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = User
+		fields = "__all__"
 
 class StudentSerializer(serializers.ModelSerializer):
 	courses = CourseSerializer(many=True)

@@ -74,9 +74,6 @@ class StudentAPITestCase(APITestCase):
 		self.assertEqual(len(res), 1)
 		
 	def test_student_post_api(self):
-		"""
-		test failing because post method is not complete -TODO
-		"""
 		user = User.objects.create()
 		student_json = {"first_name": "bob", "last_name": "snob", "user": user.id}
 		res, st = self.post_student(student_json)
