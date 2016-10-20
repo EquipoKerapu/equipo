@@ -34,28 +34,42 @@ class StudentAPITestCase(APITestCase):
 		self.user = User.objects.create(username='superuser')
 		self.user.is_superuser = True
 	
+	def render_response(self, response):
+		response = response.render()
+		return json.loads(response.content), response.status_code
+
+	def get_student(self, pk):
+		request = self.factory.get("{0}/{1}".format(self.student_api, pk))
+		request.user = self.user
+		response = StudentRetrieveUpdateView.as_view()(request, pk=pk)
+		return self.render_response(response)
+
 	def post_student(self, student_json):
 		request = self.factory.post(self.student_api, student_json)
 		request.user = self.user
 		response = StudentListCreateView.as_view()(request)
-		response = response.render()
-		return response
+		return self.render_response(response)
+
+	def put_student(self, student_json, pk):
+		request = self.factory.put("{0}/{1}".format(self.student_api, pk), student_json)
+		request.user = self.user
+		response = StudentRetrieveUpdateView.as_view()(request, pk=pk)
+		return self.render_response(response)
 		
 	def list_students(self):
 		request = self.factory.get(self.student_api)
 		request.user = self.user
 		response = StudentListCreateView.as_view()(request)
-		response = response.render()
-		return json.loads(response.content)
+		return self.render_response(response)
 
 	def test_student_list_api(self):
-		res = self.list_students()
+		res, st = self.list_students()
 		self.assertIsInstance(res, list)
 		self.assertEqual(len(res), 0)
 
 		Student.objects.create(first_name="test", last_name="user")
 
-		res = self.list_students()
+		res, st = self.list_students()
 		self.assertIsInstance(res, list)
 		self.assertEqual(len(res), 1)
 		
@@ -64,7 +78,29 @@ class StudentAPITestCase(APITestCase):
 		test failing because post method is not complete -TODO
 		"""
 		user = User.objects.create()
-		student_json = {"first_name": "bob", "last_name": "snob", "user_id": user.id}
-		res = self.post_student(student_json)
-		print res 
-		#self.assertEqual(res.status_code, 201)
+		student_json = {"first_name": "bob", "last_name": "snob", "user": user.id}
+		res, st = self.post_student(student_json)
+		self.assertEqual(st, 201)
+
+	def test_student_put_api(self):
+		user = User.objects.create()
+		student_json = {"first_name": "bob", "last_name": "snob", "user": user.id}
+		res, st = self.post_student(student_json)
+		self.assertEqual(st, 201)
+		self.assertEqual(res['first_name'], 'bob')
+
+		updated_student_json = {"id": res['id'], "first_name": "bob is updated", "last_name": "snob", "user": user.id}
+		res, st = self.put_student(updated_student_json, res['id'])
+		self.assertEqual(st, 200)
+		self.assertEqual(res['first_name'], "bob is updated")
+
+	def test_student_get_api(self):
+		user = User.objects.create()
+		student_json = {"first_name": "bob", "last_name": "snob", "user": user.id}
+		res, st = self.post_student(student_json)
+		self.assertEqual(st, 201)
+		self.assertEqual(res['first_name'], 'bob')
+
+		res, st = self.get_student(res['id'])
+		self.assertEqual(st, 200)
+		self.assertEqual(res['first_name'], 'bob')
