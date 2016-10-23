@@ -18,3 +18,6 @@ class Course(models.Model):
 	course_number = models.CharField(max_length=16)
 	course_quarter = models.CharField(max_length=16, choices=QUARTER_CHOICES)
 	course_year = models.IntegerField()
+
+	def __unicode__(self):
+		return self.course_title

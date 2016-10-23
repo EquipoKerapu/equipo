@@ -10,14 +10,16 @@ import json
 # Create your tests here.
 class StudentModelTestCase(TestCase):
 	def setUp(self):
-		self.student = Student.objects.create(first_name='Test',
-										last_name='User')
+		self.student = Student.objects.create()
 
 	def test_student_user(self):
-		self.student.set_user(username='test_user', password='test_user_pwd')
+		self.student.create_user(username='test_user', password='test_user_pwd', email="eahuntington@cpp.edu")
 		self.assertEqual(self.student.user.username, 'test_user')
 		self.assertFalse(self.student.user.is_superuser)
 		self.assertFalse(self.student.user.is_staff)
+
+	def test_student_user_kwargs(self):
+		self.student.create_user(username='test_user', password='test_user_pwd', email="eahuntington@cpp.edu", kwargs={'first_name': 'elinor', 'last_name': 'huntington'})
 
 	def test_student_courses(self):
 		course1 = Course.objects.create(course_title="title", 
@@ -74,25 +76,22 @@ class StudentAPITestCase(APITestCase):
 		self.assertEqual(len(res), 1)
 		
 	def test_student_post_api(self):
-		"""
-		test failing because post method is not complete -TODO
-		"""
-		user = User.objects.create()
-		student_json = {"first_name": "bob", "last_name": "snob", "user": user.id}
+		user = User.objects.create(first_name='bob', last_name='snob')
+		student_json = {"user": user.id}
 		res, st = self.post_student(student_json)
 		self.assertEqual(st, 201)
 
 	def test_student_put_api(self):
-		user = User.objects.create()
-		student_json = {"first_name": "bob", "last_name": "snob", "user": user.id}
+		user = User.objects.create(first_name='bob', last_name='snob')
+		student_json = {"user": user.id}
 		res, st = self.post_student(student_json)
 		self.assertEqual(st, 201)
-		self.assertEqual(res['first_name'], 'bob')
+		self.assertEqual(res['user']['first_name'], 'bob')
 
 		updated_student_json = {"id": res['id'], "first_name": "bob is updated", "last_name": "snob", "user": user.id}
 		res, st = self.put_student(updated_student_json, res['id'])
 		self.assertEqual(st, 200)
-		self.assertEqual(res['first_name'], "bob is updated")
+		self.assertEqual(res['user']['first_name'], "bob is updated")
 
 	def test_student_get_api(self):
 		user = User.objects.create()
