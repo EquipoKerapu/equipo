@@ -78,6 +78,7 @@ class StudentAPITestCase(APITestCase):
 	def test_student_post_api(self):
 		user = User.objects.create(first_name='bob', last_name='snob')
 		student_json = {"user": user.id}
+
 		res, st = self.post_student(student_json)
 		self.assertEqual(st, 201)
 
