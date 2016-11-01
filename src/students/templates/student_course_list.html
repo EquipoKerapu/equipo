@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%block css%}
+	{{block.super}}
+
+{%endblock%}
+{%block js%}
+	{{block.super}}
+{%endblock%}
+{% block content %}
+<div class="container-fluid">
+	<h2>Courses</h2>
+	<br>
+	<table class="table table-striped">
+		<thead>
+			<th>Professor</th>
+			<th>Course</th>
+			<th>Quarter</th>
+			<th>Questions Answered?</th>
+			<th>Rank</th>
+		</thead>
+		<tbody>
+			{% for course in course_list %}
+			<tr>
+			<td>{{course.professor.user.username}}</td>
+			<td><a href='/users/students/{{view.student_mapping.student.id}}/courses/{{course.course_id}}'>{{course.course_title}}</a></td>
+			<td>{{course.course_quarter}}</td>
+			<td>{{course.answered}}</td>
+			<td>{{course.rank}}</td>
+		</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{%endblock%}

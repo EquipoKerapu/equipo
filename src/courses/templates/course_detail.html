@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+{{course_detail.course_title}}
+<br>
+{% for student in view.students %}
+	<br>
+	{{student}}<br>
+	{%for option in student.options.all %}
+		{{option.question}}<br>
+		{{option.option}}
+		<br><br>
+	{%endfor%}
+{% endfor %}
+
+<br>
+{{view.professor}}
+<br>
+{% for question in view.professor.questions.all %}
+	{{question}}
+	<br>
+	{% for option in question.question_options.all %}
+		{{option.option}}<br>
+	{%endfor%}
+	<br>
+{%endfor%}
+{% endblock %}

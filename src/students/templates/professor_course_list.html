@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%block css%}
+	{{block.super}}
+
+{%endblock%}
+{%block js%}
+	{{block.super}}
+{%endblock%}
+{% block content %}
+<div class="container-fluid">
+	<table class="table table-striped">
+	    <thead>
+			<tr>
+				<th>
+					Title
+				</th>
+				<th>
+					Number
+				</th>
+				<th>
+					Quarter
+				</th>
+				<th>
+					Year
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+
+			{%for course in professor_course_list %}
+			<tr>
+				<td>
+					<a href='/users/professors/{{view.professor.id}}/courses/{{course.id}}' >{{course.course_title}}</a>
+				</td>
+				<td>
+					{{course.course_number}}
+				</td>
+				<td>
+					{{course.course_quarter}}
+				</td>
+				<td>
+					{{course.course_year}}
+				</td>
+			</tr>
+
+			{%endfor%}
+		</tbody>
+	</table>
+</div>
+{%endblock%}

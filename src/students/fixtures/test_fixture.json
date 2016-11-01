@@ -1,0 +1,1218 @@
+[
+{
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": {
+        "app_label": "admin",
+        "model": "logentry"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": {
+        "app_label": "auth",
+        "model": "permission"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": {
+        "app_label": "auth",
+        "model": "user"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 4,
+    "fields": {
+        "app_label": "auth",
+        "model": "group"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": {
+        "app_label": "contenttypes",
+        "model": "contenttype"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": {
+        "app_label": "sessions",
+        "model": "session"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": {
+        "app_label": "courses",
+        "model": "course"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": {
+        "app_label": "students",
+        "model": "studentcoursemapping"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 9,
+    "fields": {
+        "app_label": "students",
+        "model": "professorcoursemapping"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 10,
+    "fields": {
+        "app_label": "students",
+        "model": "siteuser"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 11,
+    "fields": {
+        "app_label": "questions",
+        "model": "question"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 12,
+    "fields": {
+        "app_label": "questions",
+        "model": "option"
+    }
+},
+{
+    "model": "courses.course",
+    "pk": 1,
+    "fields": {
+        "course_title": "course 1",
+        "course_number": "1",
+        "course_quarter": "Fall",
+        "course_year": 2016
+    }
+},
+{
+    "model": "courses.course",
+    "pk": 2,
+    "fields": {
+        "course_title": "course 2",
+        "course_number": "2",
+        "course_quarter": "Fall",
+        "course_year": 2016
+    }
+},
+{
+    "model": "courses.course",
+    "pk": 3,
+    "fields": {
+        "course_title": "course 3",
+        "course_number": "3",
+        "course_quarter": "Fall",
+        "course_year": 2016
+    }
+},
+{
+    "model": "students.studentcoursemapping",
+    "pk": 1,
+    "fields": {
+        "student": 1,
+        "course": 1,
+        "rank": null,
+        "options": [
+            1,
+            4,
+            7
+        ]
+    }
+},
+{
+    "model": "students.studentcoursemapping",
+    "pk": 2,
+    "fields": {
+        "student": 2,
+        "course": 2,
+        "rank": null,
+        "options": [
+            10,
+            13,
+            16
+        ]
+    }
+},
+{
+    "model": "students.studentcoursemapping",
+    "pk": 3,
+    "fields": {
+        "student": 3,
+        "course": 3,
+        "rank": null,
+        "options": [
+            19,
+            22,
+            25
+        ]
+    }
+},
+{
+    "model": "students.studentcoursemapping",
+    "pk": 4,
+    "fields": {
+        "student": 4,
+        "course": 1,
+        "rank": null,
+        "options": [
+            1,
+            4,
+            7
+        ]
+    }
+},
+{
+    "model": "students.studentcoursemapping",
+    "pk": 5,
+    "fields": {
+        "student": 5,
+        "course": 2,
+        "rank": null,
+        "options": [
+            10,
+            13,
+            16
+        ]
+    }
+},
+{
+    "model": "students.studentcoursemapping",
+    "pk": 6,
+    "fields": {
+        "student": 6,
+        "course": 3,
+        "rank": null,
+        "options": [
+            19,
+            22,
+            25
+        ]
+    }
+},
+{
+    "model": "students.studentcoursemapping",
+    "pk": 7,
+    "fields": {
+        "student": 7,
+        "course": 1,
+        "rank": null,
+        "options": [
+            1,
+            4,
+            7
+        ]
+    }
+},
+{
+    "model": "students.studentcoursemapping",
+    "pk": 8,
+    "fields": {
+        "student": 8,
+        "course": 2,
+        "rank": null,
+        "options": [
+            10,
+            13,
+            16
+        ]
+    }
+},
+{
+    "model": "students.studentcoursemapping",
+    "pk": 9,
+    "fields": {
+        "student": 9,
+        "course": 3,
+        "rank": null,
+        "options": [
+            19,
+            22,
+            25
+        ]
+    }
+},
+{
+    "model": "students.professorcoursemapping",
+    "pk": 1,
+    "fields": {
+        "professor": 10,
+        "course": 1,
+        "questions": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "students.professorcoursemapping",
+    "pk": 2,
+    "fields": {
+        "professor": 10,
+        "course": 2,
+        "questions": [
+            4,
+            5,
+            6
+        ]
+    }
+},
+{
+    "model": "students.professorcoursemapping",
+    "pk": 3,
+    "fields": {
+        "professor": 11,
+        "course": 3,
+        "questions": [
+            7,
+            8,
+            9
+        ]
+    }
+},
+{
+    "model": "questions.question",
+    "pk": 1,
+    "fields": {
+        "question": "Is 1?",
+        "relative_weight": 1
+    }
+},
+{
+    "model": "questions.question",
+    "pk": 2,
+    "fields": {
+        "question": "Is 2?",
+        "relative_weight": 2
+    }
+},
+{
+    "model": "questions.question",
+    "pk": 3,
+    "fields": {
+        "question": "Is 3?",
+        "relative_weight": 3
+    }
+},
+{
+    "model": "questions.question",
+    "pk": 4,
+    "fields": {
+        "question": "Is 4?",
+        "relative_weight": 4
+    }
+},
+{
+    "model": "questions.question",
+    "pk": 5,
+    "fields": {
+        "question": "Is 5?",
+        "relative_weight": 5
+    }
+},
+{
+    "model": "questions.question",
+    "pk": 6,
+    "fields": {
+        "question": "Is 6?",
+        "relative_weight": 6
+    }
+},
+{
+    "model": "questions.question",
+    "pk": 7,
+    "fields": {
+        "question": "Is 7?",
+        "relative_weight": 7
+    }
+},
+{
+    "model": "questions.question",
+    "pk": 8,
+    "fields": {
+        "question": "Is 8?",
+        "relative_weight": 8
+    }
+},
+{
+    "model": "questions.question",
+    "pk": 9,
+    "fields": {
+        "question": "Is 9?",
+        "relative_weight": 9
+    }
+},
+{
+    "model": "questions.option",
+    "pk": 1,
+    "fields": {
+        "question": 1,
+        "option": "opt 1-1",
+        "rank": 1
+    }
+},
+{
+    "model": "questions.option",
+    "pk": 2,
+    "fields": {
+        "question": 1,
+        "option": "opt 1-2",
+        "rank": 1
+    }
+},
+{
+    "model": "questions.option",
+    "pk": 3,
+    "fields": {
+        "question": 1,
+        "option": "opt 1-3",
+        "rank": 1
+    }
+},
+{
+    "model": "questions.option",
+    "pk": 4,
+    "fields": {
+        "question": 2,
+        "option": "opt 2-1",
+        "rank": 2
+    }
+},
+{
+    "model": "questions.option",
+    "pk": 5,
+    "fields": {
+        "question": 2,
+        "option": "opt 2-2",
+        "rank": 2
+    }
+},
+{
+    "model": "questions.option",
+    "pk": 6,
+    "fields": {
+        "question": 2,
+        "option": "opt 2-3",
+        "rank": 2
+    }
+},
+{
+    "model": "questions.option",
+    "pk": 7,
+    "fields": {
+        "question": 3,
+        "option": "opt 3-1",
+        "rank": 3
+    }
+},
+{
+    "model": "questions.option",
+    "pk": 8,
+    "fields": {
+        "question": 3,
+        "option": "opt 3-2",
+        "rank": 3
+    }
+},
+{
+    "model": "questions.option",
+    "pk": 9,
+    "fields": {
+        "question": 3,
+        "option": "opt 3-3",
+        "rank": 3
+    }
+},
+{
+    "model": "questions.option",
+    "pk": 10,
+    "fields": {
+        "question": 4,
+        "option": "opt 4-1",
+        "rank": 4
+    }
+},
+{
+    "model": "questions.option",
+    "pk": 11,
+    "fields": {
+        "question": 4,
+        "option": "opt 4-2",
+        "rank": 4
+    }
+},
+{
+    "model": "questions.option",
+    "pk": 12,
+    "fields": {
+        "question": 4,
+        "option": "opt 4-3",
+        "rank": 4
+    }
+},
+{
+    "model": "questions.option",
+    "pk": 13,
+    "fields": {
+        "question": 5,
+        "option": "opt 5-1",
+        "rank": 5
+    }
+},
+{
+    "model": "questions.option",
+    "pk": 14,
+    "fields": {
+        "question": 5,
+        "option": "opt 5-2",
+        "rank": 5
+    }
+},
+{
+    "model": "questions.option",
+    "pk": 15,
+    "fields": {
+        "question": 5,
+        "option": "opt 5-3",
+        "rank": 5
+    }
+},
+{
+    "model": "questions.option",
+    "pk": 16,
+    "fields": {
+        "question": 6,
+        "option": "opt 6-1",
+        "rank": 6
+    }
+},
+{
+    "model": "questions.option",
+    "pk": 17,
+    "fields": {
+        "question": 6,
+        "option": "opt 6-2",
+        "rank": 6
+    }
+},
+{
+    "model": "questions.option",
+    "pk": 18,
+    "fields": {
+        "question": 6,
+        "option": "opt 6-3",
+        "rank": 6
+    }
+},
+{
+    "model": "questions.option",
+    "pk": 19,
+    "fields": {
+        "question": 7,
+        "option": "opt 7-1",
+        "rank": 7
+    }
+},
+{
+    "model": "questions.option",
+    "pk": 20,
+    "fields": {
+        "question": 7,
+        "option": "opt 7-2",
+        "rank": 7
+    }
+},
+{
+    "model": "questions.option",
+    "pk": 21,
+    "fields": {
+        "question": 7,
+        "option": "opt 7-3",
+        "rank": 7
+    }
+},
+{
+    "model": "questions.option",
+    "pk": 22,
+    "fields": {
+        "question": 8,
+        "option": "opt 8-1",
+        "rank": 8
+    }
+},
+{
+    "model": "questions.option",
+    "pk": 23,
+    "fields": {
+        "question": 8,
+        "option": "opt 8-2",
+        "rank": 8
+    }
+},
+{
+    "model": "questions.option",
+    "pk": 24,
+    "fields": {
+        "question": 8,
+        "option": "opt 8-3",
+        "rank": 8
+    }
+},
+{
+    "model": "questions.option",
+    "pk": 25,
+    "fields": {
+        "question": 9,
+        "option": "opt 9-1",
+        "rank": 9
+    }
+},
+{
+    "model": "questions.option",
+    "pk": 26,
+    "fields": {
+        "question": 9,
+        "option": "opt 9-2",
+        "rank": 9
+    }
+},
+{
+    "model": "questions.option",
+    "pk": 27,
+    "fields": {
+        "question": 9,
+        "option": "opt 9-3",
+        "rank": 9
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+        "name": "Can add log entry",
+        "content_type": 1,
+        "codename": "add_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+        "name": "Can change log entry",
+        "content_type": 1,
+        "codename": "change_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+        "name": "Can delete log entry",
+        "content_type": 1,
+        "codename": "delete_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+        "name": "Can add permission",
+        "content_type": 2,
+        "codename": "add_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+        "name": "Can change permission",
+        "content_type": 2,
+        "codename": "change_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+        "name": "Can delete permission",
+        "content_type": 2,
+        "codename": "delete_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+        "name": "Can add user",
+        "content_type": 3,
+        "codename": "add_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+        "name": "Can change user",
+        "content_type": 3,
+        "codename": "change_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+        "name": "Can delete user",
+        "content_type": 3,
+        "codename": "delete_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+        "name": "Can add group",
+        "content_type": 4,
+        "codename": "add_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+        "name": "Can change group",
+        "content_type": 4,
+        "codename": "change_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+        "name": "Can delete group",
+        "content_type": 4,
+        "codename": "delete_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+        "name": "Can add content type",
+        "content_type": 5,
+        "codename": "add_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+        "name": "Can change content type",
+        "content_type": 5,
+        "codename": "change_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+        "name": "Can delete content type",
+        "content_type": 5,
+        "codename": "delete_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+        "name": "Can add session",
+        "content_type": 6,
+        "codename": "add_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+        "name": "Can change session",
+        "content_type": 6,
+        "codename": "change_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+        "name": "Can delete session",
+        "content_type": 6,
+        "codename": "delete_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+        "name": "Can add course",
+        "content_type": 7,
+        "codename": "add_course"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+        "name": "Can change course",
+        "content_type": 7,
+        "codename": "change_course"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+        "name": "Can delete course",
+        "content_type": 7,
+        "codename": "delete_course"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+        "name": "Can add student course mapping",
+        "content_type": 8,
+        "codename": "add_studentcoursemapping"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+        "name": "Can change student course mapping",
+        "content_type": 8,
+        "codename": "change_studentcoursemapping"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+        "name": "Can delete student course mapping",
+        "content_type": 8,
+        "codename": "delete_studentcoursemapping"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+        "name": "Can add professor course mapping",
+        "content_type": 9,
+        "codename": "add_professorcoursemapping"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+        "name": "Can change professor course mapping",
+        "content_type": 9,
+        "codename": "change_professorcoursemapping"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+        "name": "Can delete professor course mapping",
+        "content_type": 9,
+        "codename": "delete_professorcoursemapping"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+        "name": "Can add site user",
+        "content_type": 10,
+        "codename": "add_siteuser"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+        "name": "Can change site user",
+        "content_type": 10,
+        "codename": "change_siteuser"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+        "name": "Can delete site user",
+        "content_type": 10,
+        "codename": "delete_siteuser"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+        "name": "Can add question",
+        "content_type": 11,
+        "codename": "add_question"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+        "name": "Can change question",
+        "content_type": 11,
+        "codename": "change_question"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 33,
+    "fields": {
+        "name": "Can delete question",
+        "content_type": 11,
+        "codename": "delete_question"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 34,
+    "fields": {
+        "name": "Can add option",
+        "content_type": 12,
+        "codename": "add_option"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 35,
+    "fields": {
+        "name": "Can change option",
+        "content_type": 12,
+        "codename": "change_option"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 36,
+    "fields": {
+        "name": "Can delete option",
+        "content_type": 12,
+        "codename": "delete_option"
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "qwertyuiop",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "student_1",
+        "first_name": "",
+        "last_name": "",
+        "email": "stu_1@cpp.edu",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2016-10-27T23:09:08Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+        "password": "qwertyuiop",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "student_2",
+        "first_name": "",
+        "last_name": "",
+        "email": "stu_2@cpp.edu",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2016-10-27T23:09:08Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+        "password": "qwertyuiop",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "student_3",
+        "first_name": "",
+        "last_name": "",
+        "email": "stu_3@cpp.edu",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2016-10-27T23:09:08Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+        "password": "qwertyuiop",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "student_4",
+        "first_name": "",
+        "last_name": "",
+        "email": "stu_4@cpp.edu",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2016-10-27T23:09:08Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 5,
+    "fields": {
+        "password": "qwertyuiop",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "student_5",
+        "first_name": "",
+        "last_name": "",
+        "email": "stu_5@cpp.edu",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2016-10-27T23:09:08Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 6,
+    "fields": {
+        "password": "qwertyuiop",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "student_6",
+        "first_name": "",
+        "last_name": "",
+        "email": "stu_6@cpp.edu",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2016-10-27T23:09:08Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 7,
+    "fields": {
+        "password": "qwertyuiop",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "student_7",
+        "first_name": "",
+        "last_name": "",
+        "email": "stu_7@cpp.edu",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2016-10-27T23:09:08Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 8,
+    "fields": {
+        "password": "qwertyuiop",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "student_8",
+        "first_name": "",
+        "last_name": "",
+        "email": "stu_8@cpp.edu",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2016-10-27T23:09:08Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 9,
+    "fields": {
+        "password": "qwertyuiop",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "student_9",
+        "first_name": "",
+        "last_name": "",
+        "email": "stu_9@cpp.edu",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2016-10-27T23:09:08Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 10,
+    "fields": {
+        "password": "qwertyuiop",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "professor_1",
+        "first_name": "",
+        "last_name": "",
+        "email": "prof_1@cpp.edu",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2016-10-27T23:09:08Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 11,
+    "fields": {
+        "password": "qwertyuiop",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "professor_2",
+        "first_name": "",
+        "last_name": "",
+        "email": "prof_2@cpp.edu",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2016-10-27T23:09:08Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "students.siteuser",
+    "pk": 1,
+    "fields": {
+        "user": 1,
+        "is_professor": false
+    }
+},
+{
+    "model": "students.siteuser",
+    "pk": 2,
+    "fields": {
+        "user": 2,
+        "is_professor": false
+    }
+},
+{
+    "model": "students.siteuser",
+    "pk": 3,
+    "fields": {
+        "user": 3,
+        "is_professor": false
+    }
+},
+{
+    "model": "students.siteuser",
+    "pk": 4,
+    "fields": {
+        "user": 4,
+        "is_professor": false
+    }
+},
+{
+    "model": "students.siteuser",
+    "pk": 5,
+    "fields": {
+        "user": 5,
+        "is_professor": false
+    }
+},
+{
+    "model": "students.siteuser",
+    "pk": 6,
+    "fields": {
+        "user": 6,
+        "is_professor": false
+    }
+},
+{
+    "model": "students.siteuser",
+    "pk": 7,
+    "fields": {
+        "user": 7,
+        "is_professor": false
+    }
+},
+{
+    "model": "students.siteuser",
+    "pk": 8,
+    "fields": {
+        "user": 8,
+        "is_professor": false
+    }
+},
+{
+    "model": "students.siteuser",
+    "pk": 9,
+    "fields": {
+        "user": 9,
+        "is_professor": false
+    }
+},
+{
+    "model": "students.siteuser",
+    "pk": 10,
+    "fields": {
+        "user": 10,
+        "is_professor": true
+    }
+},
+{
+    "model": "students.siteuser",
+    "pk": 11,
+    "fields": {
+        "user": 11,
+        "is_professor": true
+    }
+}
+]

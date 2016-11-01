@@ -18,5 +18,9 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^api/', include('students.urls',))
+    url(r'^courses/', include('courses.urls')),
+    url(r'^users/', include('students.urls')),
+    url(r'^questions/', include('questions.urls')),
+
+
 ]

@@ -140,3 +140,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_DIR, 'bootstrap'),
+    os.path.join(PROJECT_DIR, 'assets'),
+)

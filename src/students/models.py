@@ -9,14 +9,8 @@ from django.core.exceptions import ValidationError
 # Create your models here.
 
 class SiteUser(models.Model):
-	user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	is_professor = models.BooleanField(default=False)
-
-	def create_user(self, username, password, email, **kwargs):
-		user = User.objects.create(username=username, password=password, email=email)
-		for attr in kwargs:
-			setattr(user, attr, kwargs[attr])
-		self.user = user
 
 	def __unicode__(self):
 		return self.user.username
@@ -25,15 +19,19 @@ class StudentCourseMapping(models.Model):
 	student = models.ForeignKey(SiteUser, related_name="student_courses")
 	course = models.ForeignKey(Course)
 	rank = models.IntegerField(null=True, blank=True)# Do we need this to persist here?
-	options = models.ManyToManyField(Option)
+	options = models.ManyToManyField(Option, null=True)
+	all_questions_answered = models.BooleanField(default=False)
 
 	def __unicode__(self):
 		return "{0}:{1}".format(self.student.user.username, self.course.course_title)
 
 class ProfessorCourseMapping(models.Model):
 	professor = models.ForeignKey(SiteUser, related_name="professor_courses")
-	course = models.ForeignKey(Course)
-	questions = models.ManyToManyField(Question)
+	course = models.OneToOneField(Course)
+	questions = models.ManyToManyField(Question, null=True)
 
 	def __unicode__(self):
 		return "{0}:{1}".format(self.professor.user.username, self.course.course_title)
+
+	class Meta:
+		unique_together = ('professor', 'course')

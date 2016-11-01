@@ -11,7 +11,7 @@ class Question(models.Model):
 		return self.question
 
 class Option(models.Model):
-	question = models.ForeignKey(Question)
+	question = models.ForeignKey(Question, related_name='question_options')
 	option = models.TextField()
 	rank = models.IntegerField() #how to set this?
 
