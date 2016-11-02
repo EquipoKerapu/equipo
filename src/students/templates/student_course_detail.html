@@ -10,17 +10,28 @@
 {%endblock%}
 
 {% block content %}
-
 <div class="container-fluid">
-  <h2></h2>
+  <h2>{{student_course_detail.course_title}}</h2>
+  <h2>Rank: {{view.course_mapping.rank|default_if_none:"--"}}</h2>
+
   <br>
   <h3>Questions</h3>
   <table class="table table-striped">
     <thead>
-
+      <th>Question</th>
+      <th>Options</th>
     </thead>
     <tbody>
-
+      {%for answer in student_answers %}
+        <tr>
+          <td>{{answer.question.question}}</td>
+          {% if answer.answer == none %}
+          <td>--</td>
+          {%else%}
+          <td>{{answer.answer.option}}</td>
+          {%endif%}
+        </tr>
+      {%endfor%}
     </tbody>
   </table>
 </div>

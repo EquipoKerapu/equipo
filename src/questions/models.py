@@ -12,7 +12,7 @@ class Question(models.Model):
 
 class Option(models.Model):
 	question = models.ForeignKey(Question, related_name='question_options')
-	option = models.TextField()
+	option = models.TextField(default="")
 	rank = models.IntegerField() #how to set this?
 
 	def __unicode__(self):

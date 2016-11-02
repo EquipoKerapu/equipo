@@ -3,6 +3,26 @@ from .models import *
 from django.views.generic import DetailView, ListView
 # Create your views here.
 
+def question_answer_mapping(pcm, scm):
+	student_answers = []
+	for question in pcm.questions.all():
+		answer = {
+			'question': question,
+			'answer': None
+		}
+		for option in question.question_options.all():
+			if option in scm.options.all():
+				answer['answer'] = option
+		student_answers.append(answer)
+	return student_answers	
+
+def questions_answered(student_answers):
+	answered = True
+	for answer in student_answers:
+		if answer['answer'] is None:
+			answered = False
+			break
+	return answered
 
 class StudentCourseDetailView(DetailView):
 	template_name = 'student_course_detail.html'
@@ -15,8 +35,17 @@ class StudentCourseDetailView(DetailView):
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(StudentCourseDetailView, self).get_context_data(*args, **kwargs)
-
+		scm = self.course_mapping()
+		pcm = ProfessorCourseMapping.objects.get(course=self.get_object())
+		student_answers = question_answer_mapping(pcm, scm)
+		context['student_answers'] = student_answers
 		return context
+
+	def course_mapping(self):
+		pk = self.kwargs['pk']
+		course_pk = self.kwargs['course_pk']
+		return StudentCourseMapping.objects.get(course=course_pk, student=pk)
+
 
 class StudentCourseListView(ListView):
 	template_name = 'student_course_list.html'
@@ -41,18 +70,9 @@ class StudentCourseListView(ListView):
 			scm = self.student_mapping()
 			course_map['professor'] = pcm.professor
 
-			questions = pcm.questions.all()
-			student_options = scm.options.all()
+			student_answers = question_answer_mapping(pcm, scm)
+			answered = questions_answered(student_answers)
 
-			answered = True
-
-			for question in questions:
-				for option in question.question_options.all():
-					if option not in student_options:
-						answered = False
-						break
-				if answered == False:
-					break
 			course_map['answered'] = answered
 			course_map['rank'] = scm.rank
 
@@ -80,25 +100,16 @@ class ProfessorCourseDetailView(DetailView):
 	def get_context_data(self, *args, **kwargs):
 		context = super(ProfessorCourseDetailView, self).get_context_data(*args, **kwargs)
 		
-		course_mapping = self.course_mapping()
-		student_mappings = self.students()
+		pcm = self.course_mapping()
+		scms = self.students()
 		course_students = []
-		for student_mapping in student_mappings:
-			student_answers = []
-			for question in course_mapping.questions.all():
-				answer = {
-					'question': question,
-					'answer': None
-				}
-				for option in question.question_options.all():
-					if option in student_mapping.options.all():
-						answer['answer'] = option
-				student_answers.append(answer)
+		for scm in scms:
+			student_answers = question_answer_mapping(pcm, scm)
 			student = {}
-			student['username'] = student_mapping.student.user.username
-			student['rank'] = student_mapping.rank
+			student['username'] = scm.student.user.username
+			student['rank'] = scm.rank
 			student['answers'] = student_answers
-			student['all_questions_answered'] = student_mapping.all_questions_answered
+			student['all_questions_answered'] = questions_answered(student_answers)
 			course_students.append(student)
 		context['course_students'] = course_students
 		return context

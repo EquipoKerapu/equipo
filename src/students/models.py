@@ -20,7 +20,6 @@ class StudentCourseMapping(models.Model):
 	course = models.ForeignKey(Course)
 	rank = models.IntegerField(null=True, blank=True)# Do we need this to persist here?
 	options = models.ManyToManyField(Option, null=True)
-	all_questions_answered = models.BooleanField(default=False)
 
 	def __unicode__(self):
 		return "{0}:{1}".format(self.student.user.username, self.course.course_title)
