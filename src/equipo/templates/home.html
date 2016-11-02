@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%block css%}
+	{{block.super}}
+
+{%endblock%}
+{%block js%}
+	{{block.super}}
+{%endblock%}
+{% block content %}
+<div>
+	<h1>Welcome to Equipo</h1>
+	<form method="get" action="/Student_Portal.html">
+		<button type="Submit">Students</button>
+	</form>
+	<form method="get" action="/Professor_Portal.html">
+		<button type="submit">Professors</button>
+	</form>
+</div>
+{% endblock %}
