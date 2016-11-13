@@ -24,7 +24,7 @@
     <tbody>
       {%for answer in student_answers %}
         <tr>
-          <td>{{answer.question.question}}</td>
+          <td>{{answer.question.question_text}}</td>
           {% if answer.answer == none %}
           <td>--</td>
           {%else%}

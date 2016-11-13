@@ -5,15 +5,16 @@ from django.views.generic import DetailView, ListView
 
 def question_answer_mapping(pcm, scm):
 	student_answers = []
-	for question in pcm.questions.all():
-		answer = {
-			'question': question,
-			'answer': None
-		}
-		for option in question.question_options.all():
-			if option in scm.options.all():
-				answer['answer'] = option
-		student_answers.append(answer)
+	if pcm.config is not None:
+		for question in pcm.config.questions.all():
+			answer = {
+				'question': question,
+				'answer': None
+			}
+			for option in question.question_options.all():
+				if option in scm.options.all():
+					answer['answer'] = option
+			student_answers.append(answer)
 	return student_answers	
 
 def questions_answered(student_answers):

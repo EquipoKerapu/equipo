@@ -15,22 +15,29 @@ class SiteUser(models.Model):
 	def __unicode__(self):
 		return self.user.username
 
+	class Meta:
+		app_label = "students"
+
 class StudentCourseMapping(models.Model):
 	student = models.ForeignKey(SiteUser, related_name="student_courses")
 	course = models.ForeignKey(Course)
 	rank = models.IntegerField(null=True, blank=True)# Do we need this to persist here?
-	options = models.ManyToManyField(Option, null=True)
+	options = models.ManyToManyField(Option)
 
 	def __unicode__(self):
 		return "{0}:{1}".format(self.student.user.username, self.course.course_title)
 
+
+
 class ProfessorCourseMapping(models.Model):
 	professor = models.ForeignKey(SiteUser, related_name="professor_courses")
 	course = models.OneToOneField(Course)
-	questions = models.ManyToManyField(Question, null=True)
+	config = models.ForeignKey(Config, null=True)
 
 	def __unicode__(self):
 		return "{0}:{1}".format(self.professor.user.username, self.course.course_title)
 
 	class Meta:
 		unique_together = ('professor', 'course')
+
+

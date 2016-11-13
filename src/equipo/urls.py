@@ -23,7 +23,8 @@ urlpatterns = [
     url(r'^users/', include('students.urls')),
     url(r'^questions/', include('questions.urls')),
     url(r'^login/', views.LoginView.as_view(), name='login'),
-    url(r'^home/', views.HomeView.as_view(), name='home')
+    url(r'^logout/', views.LogoutView.as_view(), name='logout'),
+    url(r'^', views.HomeView.as_view(), name='home')
 
 
 

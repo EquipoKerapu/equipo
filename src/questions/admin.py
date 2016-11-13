@@ -1,11 +1,16 @@
 from django.contrib import admin
 from models import *
 # Register your models here.
+class OptionInline(admin.TabularInline):
+	model = Option
+
 class QuestionAdmin(admin.ModelAdmin):
-	list_display = ('question','relative_weight')
+	list_display = ('question_text','relative_weight')
+	inlines = [OptionInline]
 
-class OptionAdmin(admin.ModelAdmin):
-	list_display = ('option', 'question', 'rank')
 
-admin.site.register(Option, OptionAdmin)
+class ConfigAdmin(admin.ModelAdmin):
+	list_display = ('name',)
+
 admin.site.register(Question, QuestionAdmin)
+admin.site.register(Config, ConfigAdmin)

@@ -12,7 +12,7 @@
     "pk": 2,
     "fields": {
         "app_label": "auth",
-        "model": "permission"
+        "model": "group"
     }
 },
 {
@@ -20,7 +20,7 @@
     "pk": 3,
     "fields": {
         "app_label": "auth",
-        "model": "user"
+        "model": "permission"
     }
 },
 {
@@ -28,7 +28,7 @@
     "pk": 4,
     "fields": {
         "app_label": "auth",
-        "model": "group"
+        "model": "user"
     }
 },
 {
@@ -60,7 +60,7 @@
     "pk": 8,
     "fields": {
         "app_label": "students",
-        "model": "studentcoursemapping"
+        "model": "professorcoursemapping"
     }
 },
 {
@@ -68,7 +68,7 @@
     "pk": 9,
     "fields": {
         "app_label": "students",
-        "model": "professorcoursemapping"
+        "model": "studentcoursemapping"
     }
 },
 {
@@ -93,6 +93,14 @@
     "fields": {
         "app_label": "questions",
         "model": "option"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 13,
+    "fields": {
+        "app_label": "questions",
+        "model": "config"
     }
 },
 {
@@ -257,11 +265,7 @@
     "fields": {
         "professor": 10,
         "course": 1,
-        "questions": [
-            1,
-            2,
-            3
-        ]
+        "config": 1
     }
 },
 {
@@ -270,11 +274,7 @@
     "fields": {
         "professor": 10,
         "course": 2,
-        "questions": [
-            4,
-            5,
-            6
-        ]
+        "config": 2
     }
 },
 {
@@ -283,18 +283,14 @@
     "fields": {
         "professor": 11,
         "course": 3,
-        "questions": [
-            7,
-            8,
-            9
-        ]
+        "config": 3
     }
 },
 {
     "model": "questions.question",
     "pk": 1,
     "fields": {
-        "question": "Is 1?",
+        "question_text": "Is 1?",
         "relative_weight": 1
     }
 },
@@ -302,7 +298,7 @@
     "model": "questions.question",
     "pk": 2,
     "fields": {
-        "question": "Is 2?",
+        "question_text": "Is 2?",
         "relative_weight": 2
     }
 },
@@ -310,7 +306,7 @@
     "model": "questions.question",
     "pk": 3,
     "fields": {
-        "question": "Is 3?",
+        "question_text": "Is 3?",
         "relative_weight": 3
     }
 },
@@ -318,7 +314,7 @@
     "model": "questions.question",
     "pk": 4,
     "fields": {
-        "question": "Is 4?",
+        "question_text": "Is 4?",
         "relative_weight": 4
     }
 },
@@ -326,7 +322,7 @@
     "model": "questions.question",
     "pk": 5,
     "fields": {
-        "question": "Is 5?",
+        "question_text": "Is 5?",
         "relative_weight": 5
     }
 },
@@ -334,7 +330,7 @@
     "model": "questions.question",
     "pk": 6,
     "fields": {
-        "question": "Is 6?",
+        "question_text": "Is 6?",
         "relative_weight": 6
     }
 },
@@ -342,7 +338,7 @@
     "model": "questions.question",
     "pk": 7,
     "fields": {
-        "question": "Is 7?",
+        "question_text": "Is 7?",
         "relative_weight": 7
     }
 },
@@ -350,7 +346,7 @@
     "model": "questions.question",
     "pk": 8,
     "fields": {
-        "question": "Is 8?",
+        "question_text": "Is 8?",
         "relative_weight": 8
     }
 },
@@ -358,7 +354,7 @@
     "model": "questions.question",
     "pk": 9,
     "fields": {
-        "question": "Is 9?",
+        "question_text": "Is 9?",
         "relative_weight": 9
     }
 },
@@ -606,6 +602,45 @@
     }
 },
 {
+    "model": "questions.config",
+    "pk": 1,
+    "fields": {
+        "name": "",
+        "description": "",
+        "questions": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "questions.config",
+    "pk": 2,
+    "fields": {
+        "name": "",
+        "description": "",
+        "questions": [
+            4,
+            5,
+            6
+        ]
+    }
+},
+{
+    "model": "questions.config",
+    "pk": 3,
+    "fields": {
+        "name": "",
+        "description": "",
+        "questions": [
+            7,
+            8,
+            9
+        ]
+    }
+},
+{
     "model": "auth.permission",
     "pk": 1,
     "fields": {
@@ -636,81 +671,81 @@
     "model": "auth.permission",
     "pk": 4,
     "fields": {
-        "name": "Can add permission",
+        "name": "Can add group",
         "content_type": 2,
-        "codename": "add_permission"
+        "codename": "add_group"
     }
 },
 {
     "model": "auth.permission",
     "pk": 5,
     "fields": {
-        "name": "Can change permission",
+        "name": "Can change group",
         "content_type": 2,
-        "codename": "change_permission"
+        "codename": "change_group"
     }
 },
 {
     "model": "auth.permission",
     "pk": 6,
     "fields": {
-        "name": "Can delete permission",
+        "name": "Can delete group",
         "content_type": 2,
-        "codename": "delete_permission"
+        "codename": "delete_group"
     }
 },
 {
     "model": "auth.permission",
     "pk": 7,
     "fields": {
-        "name": "Can add user",
+        "name": "Can add permission",
         "content_type": 3,
-        "codename": "add_user"
+        "codename": "add_permission"
     }
 },
 {
     "model": "auth.permission",
     "pk": 8,
     "fields": {
-        "name": "Can change user",
+        "name": "Can change permission",
         "content_type": 3,
-        "codename": "change_user"
+        "codename": "change_permission"
     }
 },
 {
     "model": "auth.permission",
     "pk": 9,
     "fields": {
-        "name": "Can delete user",
+        "name": "Can delete permission",
         "content_type": 3,
-        "codename": "delete_user"
+        "codename": "delete_permission"
     }
 },
 {
     "model": "auth.permission",
     "pk": 10,
     "fields": {
-        "name": "Can add group",
+        "name": "Can add user",
         "content_type": 4,
-        "codename": "add_group"
+        "codename": "add_user"
     }
 },
 {
     "model": "auth.permission",
     "pk": 11,
     "fields": {
-        "name": "Can change group",
+        "name": "Can change user",
         "content_type": 4,
-        "codename": "change_group"
+        "codename": "change_user"
     }
 },
 {
     "model": "auth.permission",
     "pk": 12,
     "fields": {
-        "name": "Can delete group",
+        "name": "Can delete user",
         "content_type": 4,
-        "codename": "delete_group"
+        "codename": "delete_user"
     }
 },
 {
@@ -798,54 +833,54 @@
     "model": "auth.permission",
     "pk": 22,
     "fields": {
-        "name": "Can add student course mapping",
+        "name": "Can add professor course mapping",
         "content_type": 8,
-        "codename": "add_studentcoursemapping"
+        "codename": "add_professorcoursemapping"
     }
 },
 {
     "model": "auth.permission",
     "pk": 23,
     "fields": {
-        "name": "Can change student course mapping",
+        "name": "Can change professor course mapping",
         "content_type": 8,
-        "codename": "change_studentcoursemapping"
+        "codename": "change_professorcoursemapping"
     }
 },
 {
     "model": "auth.permission",
     "pk": 24,
     "fields": {
-        "name": "Can delete student course mapping",
+        "name": "Can delete professor course mapping",
         "content_type": 8,
-        "codename": "delete_studentcoursemapping"
+        "codename": "delete_professorcoursemapping"
     }
 },
 {
     "model": "auth.permission",
     "pk": 25,
     "fields": {
-        "name": "Can add professor course mapping",
+        "name": "Can add student course mapping",
         "content_type": 9,
-        "codename": "add_professorcoursemapping"
+        "codename": "add_studentcoursemapping"
     }
 },
 {
     "model": "auth.permission",
     "pk": 26,
     "fields": {
-        "name": "Can change professor course mapping",
+        "name": "Can change student course mapping",
         "content_type": 9,
-        "codename": "change_professorcoursemapping"
+        "codename": "change_studentcoursemapping"
     }
 },
 {
     "model": "auth.permission",
     "pk": 27,
     "fields": {
-        "name": "Can delete professor course mapping",
+        "name": "Can delete student course mapping",
         "content_type": 9,
-        "codename": "delete_professorcoursemapping"
+        "codename": "delete_studentcoursemapping"
     }
 },
 {
@@ -930,6 +965,33 @@
     }
 },
 {
+    "model": "auth.permission",
+    "pk": 37,
+    "fields": {
+        "name": "Can add config",
+        "content_type": 13,
+        "codename": "add_config"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 38,
+    "fields": {
+        "name": "Can change config",
+        "content_type": 13,
+        "codename": "change_config"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 39,
+    "fields": {
+        "name": "Can delete config",
+        "content_type": 13,
+        "codename": "delete_config"
+    }
+},
+{
     "model": "auth.user",
     "pk": 1,
     "fields": {
@@ -942,7 +1004,7 @@
         "email": "stu_1@cpp.edu",
         "is_staff": false,
         "is_active": true,
-        "date_joined": "2016-10-27T23:09:08Z",
+        "date_joined": "2016-11-11T02:03:54Z",
         "groups": [],
         "user_permissions": []
     }
@@ -960,7 +1022,7 @@
         "email": "stu_2@cpp.edu",
         "is_staff": false,
         "is_active": true,
-        "date_joined": "2016-10-27T23:09:08Z",
+        "date_joined": "2016-11-11T02:03:54Z",
         "groups": [],
         "user_permissions": []
     }
@@ -978,7 +1040,7 @@
         "email": "stu_3@cpp.edu",
         "is_staff": false,
         "is_active": true,
-        "date_joined": "2016-10-27T23:09:08Z",
+        "date_joined": "2016-11-11T02:03:54Z",
         "groups": [],
         "user_permissions": []
     }
@@ -996,7 +1058,7 @@
         "email": "stu_4@cpp.edu",
         "is_staff": false,
         "is_active": true,
-        "date_joined": "2016-10-27T23:09:08Z",
+        "date_joined": "2016-11-11T02:03:54Z",
         "groups": [],
         "user_permissions": []
     }
@@ -1014,7 +1076,7 @@
         "email": "stu_5@cpp.edu",
         "is_staff": false,
         "is_active": true,
-        "date_joined": "2016-10-27T23:09:08Z",
+        "date_joined": "2016-11-11T02:03:54Z",
         "groups": [],
         "user_permissions": []
     }
@@ -1032,7 +1094,7 @@
         "email": "stu_6@cpp.edu",
         "is_staff": false,
         "is_active": true,
-        "date_joined": "2016-10-27T23:09:08Z",
+        "date_joined": "2016-11-11T02:03:54Z",
         "groups": [],
         "user_permissions": []
     }
@@ -1050,7 +1112,7 @@
         "email": "stu_7@cpp.edu",
         "is_staff": false,
         "is_active": true,
-        "date_joined": "2016-10-27T23:09:08Z",
+        "date_joined": "2016-11-11T02:03:54Z",
         "groups": [],
         "user_permissions": []
     }
@@ -1068,7 +1130,7 @@
         "email": "stu_8@cpp.edu",
         "is_staff": false,
         "is_active": true,
-        "date_joined": "2016-10-27T23:09:08Z",
+        "date_joined": "2016-11-11T02:03:54Z",
         "groups": [],
         "user_permissions": []
     }
@@ -1086,7 +1148,7 @@
         "email": "stu_9@cpp.edu",
         "is_staff": false,
         "is_active": true,
-        "date_joined": "2016-10-27T23:09:08Z",
+        "date_joined": "2016-11-11T02:03:54Z",
         "groups": [],
         "user_permissions": []
     }
@@ -1104,7 +1166,7 @@
         "email": "prof_1@cpp.edu",
         "is_staff": false,
         "is_active": true,
-        "date_joined": "2016-10-27T23:09:08Z",
+        "date_joined": "2016-11-11T02:03:54Z",
         "groups": [],
         "user_permissions": []
     }
@@ -1122,7 +1184,7 @@
         "email": "prof_2@cpp.edu",
         "is_staff": false,
         "is_active": true,
-        "date_joined": "2016-10-27T23:09:08Z",
+        "date_joined": "2016-11-11T02:03:54Z",
         "groups": [],
         "user_permissions": []
     }

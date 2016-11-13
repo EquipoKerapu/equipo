@@ -3,7 +3,6 @@
 
 {%block css%}
 	{{block.super}}
-
 {%endblock%}
 {%block js%}
 	{{block.super}}
@@ -12,14 +11,15 @@
 
 <div class="container-fluid">
   <h2>{{professor_course_detail.course_title}}</h2>
+  <h3>({{professor_course_detail.course_quarter}} {{professor_course_detail.course_year}})</h3>
   <br>
   <h3>Students</h3>
   <table class="table table-striped">
     <thead>
       <tr>
         <th>Username</th>
-        {% for question in view.course_mapping.questions.all%}
-        <th>{{question.question}}</th>
+        {% for question in view.course_mapping.config.questions.all%}
+        <th>{{question.question_text}}</th>
         {%endfor%}
         <th>Rank</th>
       </tr>

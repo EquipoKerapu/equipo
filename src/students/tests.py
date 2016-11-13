@@ -1,6 +1,6 @@
 from django.test import TestCase
-from .models import *
-from .views import *
+from students.models import *
+from students.views import *
 from django.contrib.auth.models import User
 from rest_framework.test import APITestCase, APIRequestFactory
 from rest_framework import status
@@ -125,10 +125,15 @@ class IntegrationTestCase(TestCase):
 			user = User.objects.create(username="professor_{}".format(i), password="qwertyuiop", email="prof_{}@cpp.edu".format(i))
 			professors[i-1] = SiteUser.objects.create(user=user, is_professor=True)
 
+		
+		config_1 = Config.objects.create()
+		config_2 = Config.objects.create()
+		config_3 = Config.objects.create()
+
 		questions = [None]*9
 		options = []
 		for i in range(1,10):
-			questions[i-1] = Question.objects.create(question="Is {}?".format(i), relative_weight=i)
+			questions[i-1] = Question.objects.create(question_text="Is {}?".format(i), relative_weight=i)
 			for j in range(1,4):
 				options.append(Option.objects.create(rank=i, option="opt {0}-{1}".format(i, j), question=questions[i-1]))
 		self.students = SiteUser.objects.filter(is_professor=False)
@@ -139,22 +144,29 @@ class IntegrationTestCase(TestCase):
 		self.options = Option.objects.all()
 
 
-		pcm_1 = ProfessorCourseMapping.objects.create(professor=self.professors[0], course=self.courses[0])
-		pcm_1.questions = [q.id for q in self.questions[0:3]]
+		config_1.questions = [q.id for q in self.questions[0:3]]
+		config_2.questions = [q.id for q in self.questions[3:6]]
+		config_3.questions = [q.id for q in self.questions[6:]]
 
-		for q in pcm_1.questions.all():
+		pcm_1 = ProfessorCourseMapping.objects.create(professor=self.professors[0], course=self.courses[0])
+		pcm_1.config = config_1
+		pcm_1.save()
+
+		for q in pcm_1.config.questions.all():
 			print q.question_options.all()
 
 		pcm_2 = ProfessorCourseMapping.objects.create(professor=self.professors[0], course=self.courses[1])
-		pcm_2.questions = [q.id for q in self.questions[3:6]]
+		pcm_2.config = config_2
+		pcm_2.save()
 
-		for q in pcm_2.questions.all():
+		for q in pcm_2.config.questions.all():
 			print q.question_options.all()
 
 		pcm_3 = ProfessorCourseMapping.objects.create(professor=self.professors[1], course=self.courses[2])
-		pcm_3.questions = [q.id for q in self.questions[6:]]
+		pcm_3.config = config_3
+		pcm_3.save()
 
-		for q in pcm_3.questions.all():
+		for q in pcm_3.config.questions.all():
 			print q.question_options.all()
 
 		scms = []
@@ -164,7 +176,7 @@ class IntegrationTestCase(TestCase):
 		for scm in scms:
 			print scm.student
 			print scm.course
-			course_questions = ProfessorCourseMapping.objects.get(course=scm.course).questions.all()
+			course_questions = ProfessorCourseMapping.objects.get(course=scm.course).config.questions.all()
 			#print course_questions
 			for course_question in course_questions:
 				print course_question
