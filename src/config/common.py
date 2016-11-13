@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 import os
 from unipath import Path
+from secrets import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,8 +21,6 @@ PROJECT_DIR = Path(__file__).ancestor(2)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'c&mt01$fm-geng^8l$py3y(ngsdp3nyx)_lohweb3=tbcw9(8x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -96,10 +95,10 @@ DATABASES = {
         'USER': 'test_user',
         'PASSWORD': 'test_user_pwd',
         'HOST': '127.0.0.1',
-        'PORT': '', 
+        'PORT': '',
         'TEST': {
             'NAME': 'test_equipotest',
-        }   
+        }
     }
 }
 
