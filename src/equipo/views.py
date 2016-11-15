@@ -11,18 +11,23 @@ from students.models import SiteUser
 
 class HomeView(View):
     '''
-    Redirects users based on whether they are a professor or student
+    Redirects users based on whether they are a professor or student,
+    or to admin if they are a superuser
     '''
     def get(self, request):
         user = self.request.user 
         if user.is_authenticated():
-            user = SiteUser.objects.get(user=user)
-            if user.is_professor:
-                return redirect("professor-course-list", pk=user.id)
-            else:
-                return redirect("student-course-list", pk=user.id)
-        else:
-            return redirect("login")
+            try:
+                user = SiteUser.objects.get(user=user)
+                if user.is_professor:
+                    return redirect("professor-course-list", pk=user.id)
+                else:
+                    return redirect("student-course-list", pk=user.id)
+            except:
+                if user.is_superuser:
+                    return redirect("admin:index")
+
+        return redirect("login")
 
 class LoginView(FormView):
     """
