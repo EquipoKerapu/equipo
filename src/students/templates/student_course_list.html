@@ -9,9 +9,17 @@
 	{{block.super}}
 {%endblock%}
 {% block content %}
+
+{% ifequal user view.student_mapping.student.user%}
+
 <div class="container-fluid">
 	<h2>Courses</h2>
 	<br>
+	<select name="course">
+    {% for course in course_list %}
+            <option value="{{course.id}}">Course {{course.course_number}}: {{course.course_title}}</option>
+    {% endfor %}
+	</select>
 	<table class="table table-striped">
 		<thead>
 			<th>Professor</th>
@@ -33,4 +41,9 @@
 		</tbody>
 	</table>
 </div>
+{%else%}
+<div class="container-fluid">
+	<h2>You don't have permission for that...</h2>
+</div>
+{%endifequal%}
 {%endblock%}

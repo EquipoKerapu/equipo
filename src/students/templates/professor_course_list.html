@@ -9,6 +9,8 @@
 	{{block.super}}
 {%endblock%}
 {% block content %}
+
+{% ifequal user view.professor.user %}
 <div class="container-fluid">
 	<table class="table table-striped">
 	    <thead>
@@ -49,4 +51,9 @@
 		</tbody>
 	</table>
 </div>
+{% else %}
+<div class="container-fluid">
+	<h2>You don't have permission for that...</h2>
+</div>
+{% endifequal %}
 {%endblock%}

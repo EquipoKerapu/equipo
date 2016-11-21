@@ -9,6 +9,8 @@
 {%endblock%}
 {% block content %}
 
+{% ifequal user view.course_mapping.professor.user %}
+
 <div class="container-fluid">
   <h2>{{professor_course_detail.course_title}}</h2>
   <h3>({{professor_course_detail.course_quarter}} {{professor_course_detail.course_year}})</h3>
@@ -38,5 +40,9 @@
     </tbody>
   </table>
 </div>
-
+{% else %}
+<div class="container-fluid">
+  <h2>You don't have permission for that...</h2>
+</div>
+{% endifequal %}
 {% endblock %}

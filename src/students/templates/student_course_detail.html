@@ -10,6 +10,8 @@
 {%endblock%}
 
 {% block content %}
+
+{% ifequal user view.course_mapping.student.user %}
 <div class="container-fluid">
   <h2>{{student_course_detail.course_title}}</h2>
   <h2>Rank: {{view.course_mapping.rank|default_if_none:"--"}}</h2>
@@ -35,5 +37,9 @@
     </tbody>
   </table>
 </div>
-
+{% else %}
+<div class="container-fluid">
+  <h2>You don't have permission for that...</h2>
+</div>
+{% endifequal %}
 {% endblock %}
