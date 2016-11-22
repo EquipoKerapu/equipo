@@ -27,7 +27,8 @@ class StudentCourseMapping(models.Model):
 	def __unicode__(self):
 		return "{0}:{1}".format(self.student.user.username, self.course.course_title)
 
-
+	class Meta:
+		unique_together = ('student', 'course')
 
 class ProfessorCourseMapping(models.Model):
 	professor = models.ForeignKey(SiteUser, related_name="professor_courses")
