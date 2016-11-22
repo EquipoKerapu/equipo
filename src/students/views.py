@@ -5,6 +5,7 @@ from django.views.generic import DetailView, ListView
 from django.views.generic.edit import FormView
 from forms import CourseForm
 from django.http import HttpResponse
+from students.forms import get_course_string
 
 def question_answer_mapping(pcm, scm):
     student_answers = []
@@ -75,6 +76,13 @@ class StudentCourseListView(FormView):
         
         #return HttpResponse("hi")
 
+    def get(self, request, *args, **kwargs):
+        #form_class = self.get_form_class()
+        #form = self.get_form(form_class)
+        context = super(StudentCourseListView, self).get_context_data(**kwargs)
+        return super(StudentCourseListView, self).get(request, *args, **kwargs)
+
+
     def get_queryset(self):
         pk = self.kwargs['pk']
         return Course.objects.filter(id__in=StudentCourseMapping.objects.filter(student=pk).values_list('course'))
@@ -90,6 +98,7 @@ class StudentCourseListView(FormView):
                         'course_quarter': course.course_quarter,
                         'course_id': course.id
                     }
+            print course
             pcm = ProfessorCourseMapping.objects.get(course=course)
             scm = self.student_mapping(course)
             course_map['professor'] = pcm.professor
@@ -102,9 +111,23 @@ class StudentCourseListView(FormView):
 
             course_list.append(course_map)
         context['course_list'] = course_list
+
+        if self.request.method == 'GET':
+            form_class = self.get_form_class()
+            form = self.get_form(form_class)
+            student_courses = StudentCourseMapping.objects.filter(
+                student=SiteUser.objects.get(
+                user=self.request.user)).values_list(
+                'course', flat=True)
+            other_courses = Course.objects.exclude(id__in=student_courses)
+            choices = []
+            for course in other_courses:
+                choices.append((course.id, get_course_string(course)))
+            form.fields['course_choice'].choices = choices
+            context['form'] = form
         return context
 
-    def all_courses(self):
+    def all_courses(self):#deprecate
         return Course.objects.all()
 
     def student(self):

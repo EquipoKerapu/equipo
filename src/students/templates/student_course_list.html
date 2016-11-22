@@ -15,16 +15,23 @@
 <div class="container-fluid">
 	<h2>Courses</h2>
 	<br>
-
-	<form method="POST">
+	
+	<form class="form-horizontal" method="POST">
 		{% csrf_token %}
-		{{form}}
-		<div class="form-actions">
-			<input type="hidden" name="form-type" value="form" />
-			<button type="submit" class="btn btn-primary">Choose Course</button>
-		</div>
-	</form>
+		<div class="row">
+			<div class="col-md-4 col-md-offset-7">
+				{{form.course_choice}}
+			</div>
+			<div class="col-md-1 ">
+				<input type="hidden" name="form-type" value="form" />
+				<button type="submit" class="btn btn-primary pull-right">Add A Course</button>				
+			</div>
 
+		</div>
+
+
+	</form>
+	<br>
 	<table class="table table-striped">
 		<thead>
 			<th>Professor</th>
