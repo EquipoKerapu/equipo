@@ -15,7 +15,9 @@ class HomeView(View):
     or to admin if they are a superuser
     '''
     def get(self, request):
+        print "in home get"
         user = self.request.user 
+        print user
         if user.is_authenticated():
             try:
                 user = SiteUser.objects.get(user=user)
@@ -43,10 +45,10 @@ class LoginView(FormView):
     @method_decorator(never_cache)
     def dispatch(self, request, *args, **kwargs):
         request.session.set_test_cookie()
-
         return super(LoginView, self).dispatch(request, *args, **kwargs)
-
+        
     def form_valid(self, form):
+        user = form.get_user()
         auth_login(self.request, form.get_user())
 
         if self.request.session.test_cookie_worked():
