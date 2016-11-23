@@ -13,3 +13,8 @@ def get_choices():# TODO need to filter this based on student user so they can't
 
 class CourseForm(forms.Form):
     course_choice = forms.ChoiceField(label="", choices=get_choices(), widget=forms.Select(attrs={'class': 'form-control'})) 
+
+
+
+
+

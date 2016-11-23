@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from .models import *
-from django.views.generic import DetailView, ListView
+from django.views.generic import DetailView, ListView, TemplateView
 # Create your views here.
 from django.views.generic.edit import FormView
 from forms import CourseForm
 from django.http import HttpResponse
 from students.forms import get_course_string
+from django.forms.formsets import formset_factory
 
 def question_answer_mapping(pcm, scm):
     student_answers = []
@@ -29,14 +30,16 @@ def questions_answered(student_answers):
             break
     return answered
 
-class StudentCourseDetailView(DetailView):
+class StudentCourseDetailView(TemplateView):
     template_name = 'student_course_detail.html'
     context_object_name = 'student_course_detail'
 
     def get_object(self):
         pk = self.kwargs['pk']
         course_pk = self.kwargs['course_pk']
-        return StudentCourseMapping.objects.get(course=course_pk, student=pk).course
+        course = StudentCourseMapping.objects.get(course=course_pk, student=pk).course
+        self.request.session['course'] = course.id
+        return course
 
     def get_context_data(self, *args, **kwargs):
         context = super(StudentCourseDetailView, self).get_context_data(*args, **kwargs)
@@ -44,6 +47,8 @@ class StudentCourseDetailView(DetailView):
         pcm = ProfessorCourseMapping.objects.get(course=self.get_object())
         student_answers = question_answer_mapping(pcm, scm)
         context['student_answers'] = student_answers
+
+
         return context
 
     def course_mapping(self):

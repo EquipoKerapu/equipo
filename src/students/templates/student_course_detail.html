@@ -32,10 +32,12 @@
           {%else%}
           <td>{{answer.answer.option}}</td>
           {%endif%}
+          <td><a href="{% url 'question-detail' pk=answer.question.id %}">Change Answer</a></td>
         </tr>
       {%endfor%}
     </tbody>
   </table>
+  {{formset}}
 </div>
 {% else %}
 <div class="container-fluid">
