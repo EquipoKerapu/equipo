@@ -12,7 +12,9 @@ def get_choices():# TODO need to filter this based on student user so they can't
 	return tuple(choices)
 
 class CourseForm(forms.Form):
-    course_choice = forms.ChoiceField(label="", choices=get_choices(), widget=forms.Select(attrs={'class': 'form-control'})) 
+    #course_choice = forms.ChoiceField(label="", choices=get_choices(), widget=forms.Select(attrs={'class': 'form-control'})) 
+    #course_choice = forms.ChoiceField(label="", choices=((1,'1')), widget=forms.Select(attrs={'class': 'form-control'})) 
+    course_choice = forms.ModelChoiceField(label="", queryset=Course.objects.all(), widget=forms.Select(attrs={'class': 'form-control'})) 
 
 
 

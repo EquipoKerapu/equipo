@@ -24,4 +24,4 @@ class Course(models.Model):
 	created_on = models.DateTimeField(auto_now_add=True)
 
 	def __unicode__(self):
-		return self.course_title
+		return "{0}: {1}, {2} {3}".format(self.course_number, self.course_title, self.course_quarter, self.course_year)
