@@ -101,6 +101,7 @@ class StudentCourseListView(FormView):
                         'course_title': '{0}: {1}'
                             .format(course.course_number, course.course_title),
                         'course_quarter': course.course_quarter,
+                        'course_year': course.course_year,
                         'course_id': course.id
                     }
             print course
