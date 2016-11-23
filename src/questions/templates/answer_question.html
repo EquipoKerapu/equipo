@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%block css%}
+	{{block.super}}
+
+{%endblock%}
+{%block js%}
+	{{block.super}}
+{%endblock%}
+
+{% block content %}
+<div class="container-fluid">
+	<form class="form-horizontal" method="POST">
+		{% csrf_token %}
+		<div class="row">
+			<div class="col-md-2">
+				{{form.options.label}}
+			</div>
+			<div class="col-md-4">
+				{{form.options}}
+			</div>
+			<div class="col-md-1 ">
+				<input type="hidden" name="form-type" value="form" />
+				<button type="submit" class="btn btn-primary pull-right">Choose Option</button>				
+			</div>
+		</div>
+	</form>
+</div>
+{% endblock %}
