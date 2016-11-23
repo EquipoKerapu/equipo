@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 from courses.models import Course
 from questions.models import *
 from django.core.exceptions import ValidationError
-
-# Create your models here.
+from django.contrib.auth.models import Permission
+from django.db.models import Q
 
 class SiteUser(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -14,6 +14,22 @@ class SiteUser(models.Model):
 
 	def __unicode__(self):
 		return self.user.username
+
+	def save(self, *args, **kwargs):
+		if self.is_professor:
+			print "professor"
+			perms = Permission.objects.all()
+			question_perms = perms.filter(codename__contains="question")
+			option_perms = perms.filter(codename__contains="option")
+			config_perms = perms.filter(codename__contains="config")
+			course_perms = perms.filter(Q(codename__contains="course") & ~Q(codename__contains="student"))
+			for perm_list in (question_perms, option_perms, config_perms, course_perms):
+				for permission in perm_list:
+					self.user.user_permissions.add(permission)
+			self.user.save()
+		else:
+			print "student"
+		super(SiteUser, self).save(*args, **kwargs)
 
 	class Meta:
 		app_label = "students"
