@@ -11,13 +11,30 @@ from django.contrib.auth.models import Permission
 
 from django.db.models import Q
 
+class PermissionsTestCase(TestCase):
+	def setUp(self):
+		self.prof = User.objects.create(username="professor")
+		self.prof_su = SiteUser.objects.create(user=self.prof, is_professor=True)
+		self.stu = User.objects.create(username="student")
+		self.stu_su = SiteUser.objects.create(user=self.stu, is_professor=False)
+
+		self.perm_codenames = ["add_course", "change_course", "delete_course", "add_config", "change_config", "delete_config",
+								"add_option", "change_option", "delete_option", "add_question", "change_question",
+								"delete_question", "add_professorcoursemapping", "change_professorcoursemapping",
+								"delete_professorcoursemapping"]
+
+	def test_prof_permissions(self):
+		perms = Permission.objects.filter(user=self.prof)
+		for perm in perms:
+			self.assertIn(perm.codename, self.perm_codenames)
+		self.assertTrue(len(perms) == 15)
+
+	def test_stu_permissions(self):
+		perms = Permission.objects.filter(user=self.stu)
+		self.assertTrue(len(perms) == 0)		
+
 class IntegrationTestCase(TestCase):
 	def setUp(self):
-		#superuser = SiteUser.objects.create()
-		#superuser.create_user(username="superuser", password="qwertyuiop", email="superuser@cpp.edu", kwargs={'is_superuser':True})
-
-		perms = Permission.objects.all()
-
 		students = [None]*9
 		for i in range(1,10):
 			user = User.objects.create(username="student_{}".format(i),email="stu_{}@cpp.edu".format(i))
@@ -35,14 +52,6 @@ class IntegrationTestCase(TestCase):
 			user = User.objects.create(username="professor_{}".format(i), email="prof_{}@cpp.edu".format(i))
 			user.set_password("qwertyuiop")
 			user.is_staff = True
-			question_perms = perms.filter(codename__contains="question")
-			option_perms = perms.filter(codename__contains="option")
-			config_perms = perms.filter(codename__contains="config")
-			course_perms = perms.filter(Q(codename__contains="course") & ~Q(codename__contains="student"))
-			for perm_list in (question_perms, option_perms, config_perms, course_perms):
-				for permission in perm_list:
-					user.user_permissions.add(permission)
-
 			user.save()
 			professors[i-1] = SiteUser.objects.create(user=user, is_professor=True)
 
@@ -63,7 +72,6 @@ class IntegrationTestCase(TestCase):
 		self.professors = SiteUser.objects.filter(is_professor=True)
 		self.questions = Question.objects.all()
 		self.options = Option.objects.all()
-
 
 		config_1.questions = [q.id for q in self.questions[0:3]]
 		config_2.questions = [q.id for q in self.questions[3:6]]
