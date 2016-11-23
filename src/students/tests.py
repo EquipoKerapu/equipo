@@ -108,7 +108,10 @@ def create_courses():
 
 class DemoTestCase(TestCase):
 
+
 	def setUp(self):
+		self.fixtures = False
+
 		create_users()
 		create_courses()
 
@@ -151,8 +154,8 @@ class DemoTestCase(TestCase):
 			for q in course_questions:
 				options = q.question_options.all()
 				scm.options.add(options[random.randint(0, len(options) - 1)])
-
-		management.call_command('dumpdata', output="students/fixtures/demo_fixture.json", 
+		if self.fixtures:
+			management.call_command('dumpdata', output="students/fixtures/demo_fixture.json", 
 							indent=4, use_natural_foreign=True)
 
 	def test_two(self):
@@ -172,7 +175,8 @@ class DemoTestCase(TestCase):
 		self.assertEqual(len(config_2.questions.all()), 15)
 		self.assertEqual(len(config_3.questions.all()), 16)
 
-		management.call_command('dumpdata', output="students/fixtures/demo_fixture_noscms.json", 
+		if self.fixtures:
+			management.call_command('dumpdata', output="students/fixtures/demo_fixture_noscms.json", 
 							indent=4, use_natural_foreign=True)
 
 class PermissionsTestCase(TestCase):
