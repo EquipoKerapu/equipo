@@ -34,6 +34,7 @@
 			<th>Professor</th>
 			<th>Course</th>
 			<th>Quarter</th>
+			<th>Year</th>
 			<th>Questions Answered?</th>
 			<th>Rank</th>
 		</thead>
@@ -43,6 +44,7 @@
 			<td>{{course.professor.user.username}}</td>
 			<td><a href='/users/students/{{view.student.id}}/courses/{{course.course_id}}'>{{course.course_title}}</a></td>
 			<td>{{course.course_quarter}}</td>
+			<td>{{course.course_year}}</td>
 			<td>{{course.answered}}</td>
 			<td>{{course.rank}}</td>
 		</tr>

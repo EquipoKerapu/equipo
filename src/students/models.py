@@ -17,7 +17,6 @@ class SiteUser(models.Model):
 
 	def save(self, *args, **kwargs):
 		if self.is_professor:
-			print "professor"
 			perms = Permission.objects.all()
 			question_perms = perms.filter(codename__contains="question")
 			option_perms = perms.filter(codename__contains="option")
@@ -27,8 +26,7 @@ class SiteUser(models.Model):
 				for permission in perm_list:
 					self.user.user_permissions.add(permission)
 			self.user.save()
-		else:
-			print "student"
+		self.user.save()
 		super(SiteUser, self).save(*args, **kwargs)
 
 	class Meta:

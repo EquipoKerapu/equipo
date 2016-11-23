@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from .models import *
 from django.views.generic import DetailView, ListView, TemplateView
-# Create your views here.
 from django.views.generic.edit import FormView
 from forms import CourseForm
 from django.http import HttpResponse
@@ -71,7 +70,7 @@ class StudentCourseListView(FormView):
         if form.is_valid():
             print "valid"
             user = SiteUser.objects.get(user=request.user)
-            course = Course.objects.get(id=form.cleaned_data['course_choice'])
+            course = form.cleaned_data['course_choice']
             StudentCourseMapping.objects.create(student=user, course=course)
             return self.form_valid(form)
         else:
@@ -101,6 +100,7 @@ class StudentCourseListView(FormView):
                         'course_title': '{0}: {1}'
                             .format(course.course_number, course.course_title),
                         'course_quarter': course.course_quarter,
+                        'course_year': course.course_year,
                         'course_id': course.id
                     }
             print course
@@ -128,8 +128,22 @@ class StudentCourseListView(FormView):
             choices = []
             for course in other_courses:
                 choices.append((course.id, get_course_string(course)))
-            form.fields['course_choice'].choices = choices
+            form.fields['course_choice'].queryset = other_courses
             context['form'] = form
+
+        if self.request.method == 'POST':
+            form_class = self.get_form_class()
+            form = self.get_form(form_class)
+            student_courses = StudentCourseMapping.objects.filter(
+                student=SiteUser.objects.get(
+                user=self.request.user)).values_list(
+                'course', flat=True)
+            other_courses = Course.objects.exclude(id__in=student_courses)
+            choices = []
+            for course in other_courses:
+                choices.append((course.id, get_course_string(course)))
+            form.fields['course_choice'].queryset = other_courses
+            context['form'] = form    
         return context
 
     def all_courses(self):#deprecate

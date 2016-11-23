@@ -1,0 +1,39 @@
+First Name,Last Name,username,email,password,is_staff,is_professor
+Michael,Caine,mcaine,mcaine@cpp.edu,qwertyuiop,FALSE,FALSE
+Tilda,Swinton,tswinton,tswinton@cpp.edu,qwertyuiop,FALSE,FALSE
+Ziyi,Zhang,zzhang,zzhang@cpp.edu,qwertyuiop,FALSE,FALSE
+Konstantin,Khabenskiy,kkhabenskiy,kkhabenskiy@cpp.edu,qwertyuiop,FALSE,FALSE
+Stellan ,Skarsgard,sskarsgard,sskarsgard@cpp.edu,qwertyuiop,FALSE,FALSE
+Lena,Olin,lolin,lolin@cpp.edu,qwertyuiop,FALSE,FALSE
+Lupe,Velez,lvelez,lvelez@cpp.edu,qwertyuiop,FALSE,FALSE
+Maria,Felix,mfelix,mfelix@cpp.edu,qwertyuiop,FALSE,FALSE
+Glayds  ,SMITH,gsmith,gsmith@cpp.edu,qwertyuiop,FALSE,FALSE
+Johnsie  ,JOHNSON,jjohnsom,jjohnsom@cpp.edu,qwertyuiop,FALSE,FALSE
+Charolette  ,WILLIAMS,cwilliams,cwilliams@cpp.edu,qwertyuiop,FALSE,FALSE
+Keenan  ,BROWN,kbrown,kbrown@cpp.edu,qwertyuiop,FALSE,FALSE
+Mignon  ,JONES,mjones,mjones@cpp.edu,qwertyuiop,FALSE,FALSE
+Anjelica  ,MILLER,amiller,amiller@cpp.edu,qwertyuiop,FALSE,FALSE
+Mark  ,DAVIS,mdavis,mdavis@cpp.edu,qwertyuiop,FALSE,FALSE
+Terresa  ,GARCIA,tgarcia,tgarcia@cpp.edu,qwertyuiop,FALSE,FALSE
+Morgan  ,RODRIGUEZ,mrodriguez,mrodriguez@cpp.edu,qwertyuiop,FALSE,FALSE
+Stanford  ,WILSON,swilson,swilson@cpp.edu,qwertyuiop,FALSE,FALSE
+Corie  ,MARTINEZ,cmartinez,cmartinez@cpp.edu,qwertyuiop,FALSE,FALSE
+Trevor  ,ANDERSON,tanderson,tanderson@cpp.edu,qwertyuiop,FALSE,FALSE
+Kristine  ,TAYLOR,ktaylor,ktaylor@cpp.edu,qwertyuiop,FALSE,FALSE
+Almeta  ,THOMAS,athomas,athomas@cpp.edu,qwertyuiop,FALSE,FALSE
+Christeen  ,HERNANDEZ,chernandez,chernandez@cpp.edu,qwertyuiop,FALSE,FALSE
+Giovanna  ,MOORE,gmoore,gmoore@cpp.edu,qwertyuiop,FALSE,FALSE
+Javier  ,MARTIN,jmartin,jmartin@cpp.edu,qwertyuiop,FALSE,FALSE
+Camie  ,JACKSON,cjackson,cjackson@cpp.edu,qwertyuiop,FALSE,FALSE
+Dallas  ,THOMPSON,dthompson,dthompson@cpp.edu,qwertyuiop,FALSE,FALSE
+Meaghan  ,WHITE,mwhite,mwhite@cpp.edu,qwertyuiop,FALSE,FALSE
+Sharolyn  ,LOPEZ,slopez,slopez@cpp.edu,qwertyuiop,FALSE,FALSE
+Jacinda  ,LEE,jlee,jlee@cpp.edu,qwertyuiop,FALSE,FALSE
+Cecille  ,GONZALEZ,cgonzalez,cgonzalez@cpp.edu,qwertyuiop,FALSE,FALSE
+Jama  ,HARRIS,jharris,jharris@cpp.edu,qwertyuiop,FALSE,FALSE
+Denise  ,CLARK,dclark,dclark@cpp.edu,qwertyuiop,FALSE,FALSE
+Irena  ,LEWIS,ilewis,ilewis@cpp.edu,qwertyuiop,FALSE,FALSE
+Shemeka  ,ROBINSON,srobinson,srobinson@cpp.edu,qwertyuiop,FALSE,FALSE
+Keiko  ,WALKER,kwalker,kwalker@cpp.edu,qwertyuiop,FALSE,FALSE
+Shirly  ,PEREZ,sperez,sperez@cpp.edu,qwertyuiop,TRUE,TRUE
+Belia  ,HALL,bhall,bhall@cpp.edu,qwertyuiop,TRUE,TRUE
