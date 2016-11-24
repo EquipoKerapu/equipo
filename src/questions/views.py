@@ -15,7 +15,8 @@ class QuestionDetailView(TemplateView):
         context = self.get_context_data(*args, **kwargs)
         form = context['form']
         if form.is_valid():
-            return redirect("student-course-list", pk=request.user.id)
+            course_pk = self.request.session['course']
+            return redirect("student-course-detail", pk=request.user.id, course_pk=course_pk)
         else:
             pass #TODO
 
