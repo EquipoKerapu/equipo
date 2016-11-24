@@ -10,31 +10,44 @@
 {% block content %}
 
 {% ifequal user view.course_mapping.professor.user %}
+<form class="form-inline pull-right" method="POST">
+  {%csrf_token%}
+  <div class="form-group">
+    {{form}}
+
+  </div>
+        <input type="hidden" name="form-type" value="form" />
+        <button type="submit" class="btn btn-primary pull-right">Rank and Group Students</button> 
+</form>
 
 <div class="container-fluid">
+
   <h2>{{professor_course_detail.course_title}}</h2>
+     
   <h3>({{professor_course_detail.course_quarter}} {{professor_course_detail.course_year}})</h3>
-  <br>
-  <h3>Students</h3>
+
   <table class="table table-striped">
     <thead>
       <tr>
         <th>Username</th>
+        <th>Rank</th>
+        <th>Group</th>
         {% for question in view.course_mapping.config.questions.all%}
         <th>{{question.question_text}}</th>
         {%endfor%}
-        <th>Rank</th>
+        
       </tr>
     </thead>
     <tbody>
       {% for student in course_students %}
       <tr>
         <td>{{student.username}}</td>
-        
+        <td>{{student.rank}}</td>
+        <td>{{student.group}}</td>
         {% for answer in student.answers%}
         	<td>{{answer.answer|default_if_none:'--'}}</td>
         {%endfor%}
-        <td>{{student.rank}}</td>
+        
       </tr>
       {%endfor%}
     </tbody>

@@ -35,7 +35,8 @@ class SiteUser(models.Model):
 class StudentCourseMapping(models.Model):
 	student = models.ForeignKey(SiteUser, related_name="student_courses")
 	course = models.ForeignKey(Course, related_name="student_mappings")
-	rank = models.IntegerField(null=True, blank=True)# Do we need this to persist here?
+	rank = models.IntegerField(null=True, blank=True)
+	group = models.IntegerField(null=True, blank=True)
 	options = models.ManyToManyField(Option)
 
 	def __unicode__(self):

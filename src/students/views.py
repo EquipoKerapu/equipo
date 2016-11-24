@@ -4,8 +4,10 @@ from django.views.generic import DetailView, ListView, TemplateView
 from django.views.generic.edit import FormView
 from forms import CourseForm
 from django.http import HttpResponse
-from students.forms import get_course_string
+from students.forms import get_course_string, RankForm
 from django.forms.formsets import formset_factory
+from django.shortcuts import redirect 
+from equipo.utils import *
 
 def question_answer_mapping(pcm, scm):
     student_answers = []
@@ -40,6 +42,9 @@ class StudentCourseDetailView(TemplateView):
             'professor', 'course', 'config').get(course=scm.course)
         student_answers = question_answer_mapping(pcm, scm)
         context['student_answers'] = student_answers
+        session = self.request.session
+        session['course'] = scm.course.id
+        context['course'] = scm.course.id
         return context
 
     def course_mapping(self):
@@ -144,9 +149,34 @@ class ProfessorCourseDetailView(DetailView):
             'course', 'student').prefetch_related(
             'options').filter(course=course_pk)
 
+    def post(self, request, *args, **kwargs):
+        course_pk = self.kwargs['course_pk']
+        professor_pk = self.kwargs['pk']
+        print request.POST
+        if 'form-type' in request.POST and request.POST['form-type'] == 'form':
+            print "in post"
+            form = RankForm(request.POST)
+            if form.is_valid():
+
+                scms = self.students()
+                pcm = scms[0].course.professor_mapping
+                ranked = rank_students(scms, pcm)
+                size = form.cleaned_data['average_group_size']
+                groups = group_students(size, ranked)
+                for index, group in enumerate(groups):
+                    for student in group:
+                        student.group = index + 1
+                        student.save()
+
+
+        return redirect('professor-course-detail', pk=professor_pk, course_pk=course_pk)
+
+
+
     def get_context_data(self, *args, **kwargs):
         context = super(ProfessorCourseDetailView, self).get_context_data(*args, **kwargs)
-        
+        form = RankForm(self.request.POST or None)
+        context['form'] = form
         pcm = self.course_mapping()
         scms = self.students()
         course_students = []
@@ -155,10 +185,11 @@ class ProfessorCourseDetailView(DetailView):
             student = {}
             student['username'] = scm.student.user.username
             student['rank'] = scm.rank
+            student['group'] = scm.group
             student['answers'] = student_answers
             student['all_questions_answered'] = questions_answered(student_answers)
             course_students.append(student)
-        context['course_students'] = course_students
+        context['course_students'] = sorted(course_students, key=lambda k: k['group'])
         return context
 
     def course_mapping(self):
