@@ -26,6 +26,12 @@
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
 		      <ul class="nav navbar-nav navbar-right">
+		      	{% if user.site_user.is_professor %}
+		        <li><a href="{% url "professor-course-list" pk=user.id %}">Courses</a></li>
+		        {%elif not user.site_user.is_professor and user.id is not None%}
+		        <li><a href="{% url "student-course-list" pk=user.id %}">Courses</a></li>
+
+		      	{%endif %}
 		      	{% if user.is_staff %}
 		        <li><a href="{% url "admin:questions_config_add" %}">Add Configuration</a></li>
 		        <li><a href="{% url "admin:students_professorcoursemapping_add" %}">Add Course</a></li>

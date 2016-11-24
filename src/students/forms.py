@@ -17,6 +17,7 @@ class CourseForm(forms.Form):
     course_choice = forms.ModelChoiceField(label="", queryset=Course.objects.all(), widget=forms.Select(attrs={'class': 'form-control'})) 
 
 
-
+class RankForm(forms.Form):
+	average_group_size = forms.IntegerField(label="Group Size", widget=forms.NumberInput(attrs={'class': 'form-control'}))
 
 

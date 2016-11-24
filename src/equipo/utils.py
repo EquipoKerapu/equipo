@@ -86,6 +86,7 @@ def rank_students(student_course_mappings, course):
             opt = option_map[option.id]
             rank += opt['rank']*opt['weight']
         student.rank = rank
+        student.save()
 
     students = sorted(student_course_mappings, key=lambda k:k.rank)
 
