@@ -73,16 +73,17 @@ class StudentCourseListView(FormView):
         context = super(StudentCourseListView, self).get_context_data(**kwargs)
         return super(StudentCourseListView, self).get(request, *args, **kwargs)
 
-    def get_queryset(self):
-        pk = self.kwargs['pk']
+    def get_courses(self, site_user):
         return Course.objects.filter(
-            id__in=StudentCourseMapping.objects.filter(student=pk).values_list('course'))
+            id__in=site_user.student_courses.select_related(
+            'course').prefetch_related(
+            'student_mappings', 'professor_mapping').values_list('course', flat=True))
 
     def get_context_data(self, *args, **kwargs):
         context = super(StudentCourseListView, self).get_context_data(*args, **kwargs)
         site_user = self.request.user.site_user
 
-        courses = self.get_queryset()
+        courses = self.get_courses(site_user)
         course_list = []
         for course in courses:
             course_map = {
@@ -92,12 +93,10 @@ class StudentCourseListView(FormView):
                         'course_year': course.course_year,
                         'course_id': course.id
                     }
-
             pcm = ProfessorCourseMapping.objects.select_related(
-                'professor', 'course', 'config').get(course=course)
-            scm = StudentCourseMapping.objects.select_related(
-                'course', 'student').prefetch_related(
-                'options').get(student=site_user, course=course)
+                'professor', 'config').get(course=course)
+            scm = course.student_mappings.prefetch_related('options').get(student=site_user)
+            
             course_map['professor'] = pcm.professor
 
             student_answers = question_answer_mapping(pcm, scm)
