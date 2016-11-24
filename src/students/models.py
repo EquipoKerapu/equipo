@@ -9,7 +9,7 @@ from django.contrib.auth.models import Permission
 from django.db.models import Q
 
 class SiteUser(models.Model):
-	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='site_user')
 	is_professor = models.BooleanField(default=False)
 
 	def __unicode__(self):
@@ -34,7 +34,7 @@ class SiteUser(models.Model):
 
 class StudentCourseMapping(models.Model):
 	student = models.ForeignKey(SiteUser, related_name="student_courses")
-	course = models.ForeignKey(Course)
+	course = models.ForeignKey(Course, related_name="student_mapping")
 	rank = models.IntegerField(null=True, blank=True)# Do we need this to persist here?
 	options = models.ManyToManyField(Option)
 
@@ -46,7 +46,7 @@ class StudentCourseMapping(models.Model):
 
 class ProfessorCourseMapping(models.Model):
 	professor = models.ForeignKey(SiteUser, related_name="professor_courses")
-	course = models.OneToOneField(Course)
+	course = models.OneToOneField(Course, related_name="professor_mapping")
 	config = models.ForeignKey(Config, null=True)
 
 	def __unicode__(self):
