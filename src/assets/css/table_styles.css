@@ -1,0 +1,14 @@
+td, th {
+  width: 4rem;
+  height: 2rem;
+  border: 1px solid #fff;
+  text-align: center;
+}
+th {
+	color: #ffffff;
+  background: #474e5d;
+  border-color: white;
+}
+body {
+  padding: 1rem;
+}
