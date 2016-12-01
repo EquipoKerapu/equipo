@@ -10,6 +10,7 @@
 {% block content %}
 
 {% ifequal user view.course_mapping.professor.user %}
+<div class = "container-fluid col-md-8 col-md-offset-3 center" style=" background-color: #fff ;padding-left: 2em; padding-right: 2em; height: 100vh">
 <form class="form-inline pull-right" method="POST">
   {%csrf_token%}
   <div class="form-group">
@@ -41,7 +42,7 @@
     <tbody>
       {% for student in course_students %}
       <tr>
-        <td>{{student.username}}</td>
+        <th style="background-color: rgb(255,151,17);">{{student.username}}</th>
         <td>{{student.rank}}</td>
         <td>{{student.group}}</td>
         {% for answer in student.answers%}
@@ -56,6 +57,7 @@
 {% else %}
 <div class="container-fluid">
   <h2>You don't have permission for that...</h2>
+</div>
 </div>
 {% endifequal %}
 {% endblock %}

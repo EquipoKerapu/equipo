@@ -11,7 +11,9 @@
 {% block content %}
 
 {% ifequal user view.professor.user %}
-<div class="container-fluid">
+
+
+<div class="container-fluid col-md-8 col-md-offset-3 center" style=" background-color: #fff ;padding-left: 2em; padding-right: 2em; height: 100vh">
 	<table class="table table-striped">
 	    <thead>
 			<tr>
@@ -54,6 +56,8 @@
 {% else %}
 <div class="container-fluid">
 	<h2>You don't have permission for that...</h2>
+</div>
+</div>
 </div>
 {% endifequal %}
 {%endblock%}
